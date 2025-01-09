@@ -14,7 +14,7 @@ ft_dict = {"Hello": "titi!"}
 # Modification des chaînes de caractères
 ft_list[1] = "World"
 ft_tuple = (ft_tuple[0], "France")
-ft_set = {"Paris", "Hello"}
+ft_set = sorted({"Hello", "Paris"})
 ft_dict["Hello"] = "42Paris"
 
 # Afficher les structures de données modifiées

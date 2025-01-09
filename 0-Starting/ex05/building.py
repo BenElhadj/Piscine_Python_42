@@ -4,7 +4,11 @@ import sys
 
 
 def main():
-
+    """
+    Analyze the given text and count the number of characters,
+    uppercase letters, lowercase letters, punctuation marks,
+    spaces, and digits.
+    """
     punct = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
 
     if len(sys.argv) == 1:
@@ -12,8 +16,7 @@ def main():
     elif len(sys.argv) == 2:
         text = sys.argv[1]
     else:
-        print("AssertionError: more than one argument is provided")
-        return
+        raise AssertionError("more than one argument is provided")
 
     print(f"The text contains {len(text)} characters:")
     print(f"{sum(1 for char in text if char.isupper())} upper letters")
@@ -24,4 +27,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except AssertionError as e:
+        print(f"AssertionError: {e}")
