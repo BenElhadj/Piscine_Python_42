@@ -9,7 +9,7 @@ setup(
     long_description=open("README.md").read(),
     author="bhamdi",
     author_email="bhamdi@student.42.fr",
-    url="https://github.com/BenElhadj/ft_package",
+    url="https://github.com/BenElhadj/Piscine_Python_42",
     license="42_Paris",
     packages=["ft_package"],
     classifiers=[
