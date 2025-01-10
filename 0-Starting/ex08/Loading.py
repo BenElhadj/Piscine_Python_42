@@ -3,7 +3,17 @@
 import time
 
 
-def ft_tqdm(lst: range) -> None:
+def ft_tqdm(lst: range) -> None:  # type: ignore
+    """
+    A custom progress bar generator similar to tqdm.
+
+    Args:
+        lst (range): An iterable to iterate over.
+
+    Yields:
+        Any: The next item from the iterable.
+    """
+
     total = len(lst)
     start_time = time.time()
 

@@ -1,10 +1,10 @@
 # setup.py
 
-from setuptools import setup
+from setuptools import setup  # type: ignore
 
 setup(
     name="ft_package",
-    version="0.0.42",
+    version="0.0.1",
     description="A sample test package",
     long_description=open("README.md").read(),
     author="bhamdi",
