@@ -2,7 +2,7 @@
 
 
 def give_bmi(
-            height: list[int | float], weight: list[int | float]
+        height: list[int | float], weight: list[int | float]
         ) -> list[int | float]:
     """
     Calculate the BMI (Body Mass Index) for given heights and weights.
@@ -18,10 +18,9 @@ def give_bmi(
         ValueError: If the height and weight lists are not of the same size.
         TypeError: If the elements of height or weight are not int or float.
     """
+    verrore = "(Les listes height et weight doivent avoir la même taille.)."
     if len(height) != len(weight):
-        raise ValueError(
-            "Les listes height et weight doivent avoir la même taille."
-        )
+        raise ValueError({verrore})
 
     if not all(isinstance(h, (int, float)) for h in height):
         raise TypeError(
