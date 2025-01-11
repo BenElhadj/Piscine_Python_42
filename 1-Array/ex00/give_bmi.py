@@ -1,8 +1,9 @@
 # give_bmi.py
 
-import numpy as np
 
-def give_bmi(height: list[int | float], weight: list[int | float]) -> list[int | float]:
+def give_bmi(
+            height: list[int | float], weight: list[int | float]
+        ) -> list[int | float]:
     """
     Calculate the BMI (Body Mass Index) for given heights and weights.
 
@@ -18,23 +19,31 @@ def give_bmi(height: list[int | float], weight: list[int | float]) -> list[int |
         TypeError: If the elements of height or weight are not int or float.
     """
     if len(height) != len(weight):
-        raise ValueError("Les listes height et weight doivent avoir la même taille.")
-    
+        raise ValueError(
+            "Les listes height et weight doivent avoir la même taille."
+        )
+
     if not all(isinstance(h, (int, float)) for h in height):
-        raise TypeError("Les éléments de height doivent être des entiers ou des flottants.")
+        raise TypeError(
+            "Les éléments de height doivent être des entiers ou des flottants."
+        )
     if not all(isinstance(w, (int, float)) for w in weight):
-        raise TypeError("Les éléments de weight doivent être des entiers ou des flottants.")
-    
+        raise TypeError(
+            "Les éléments de weight doivent être des entiers ou des flottants."
+        )
+
     bmi_list = []
     for h, w in zip(height, weight):
-        bmi = w / (h ** 2)
+        bmi = w / (h**2)
         bmi_list.append(bmi)
-    
+
     return bmi_list
+
 
 def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
     """
-    Apply a limit to BMI values and return a list of booleans indicating if each BMI is above the limit.
+    Apply a limit to BMI values and return a list of booleans
+    indicating if each BMI is above the limit.
 
     Args:
         bmi (list[int | float]): List of BMI values.
@@ -47,9 +56,12 @@ def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
         TypeError: If the elements of bmi are not int or float.
     """
     if not all(isinstance(b, (int, float)) for b in bmi):
-        raise TypeError("Les éléments de bmi doivent être des entiers ou des flottants.")
-    
+        raise TypeError(
+            "Les éléments de bmi doivent être des entiers ou des flottants."
+        )
+
     return [b > limit for b in bmi]
+
 
 def main():
     """
@@ -64,6 +76,7 @@ def main():
         print(apply_limit(bmi, 26))
     except (ValueError, TypeError) as e:
         print(f"Error: {e}")
+
 
 if __name__ == "__main__":
     main()
