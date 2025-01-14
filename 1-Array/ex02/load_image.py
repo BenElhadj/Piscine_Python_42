@@ -1,7 +1,8 @@
 # load_image.py
 
 import numpy as np
-from matplotlib import pyplot as plt # type: ignore
+from matplotlib import pyplot as plt  # type: ignore
+
 
 def ft_load(path: str) -> np.ndarray:
     """
@@ -20,19 +21,20 @@ def ft_load(path: str) -> np.ndarray:
     try:
         # Charger l'image avec matplotlib
         image = plt.imread(path)
-        
+
         # Afficher le format de l'image
         print(f"The format of the image is: {path.split('.')[-1].upper()}")
-        
+
         # Afficher le contenu des pixels
         print(f"The shape of image is: {image.shape}")
         print(image)
-        
+
         return image
     except FileNotFoundError:
         raise FileNotFoundError(f"Error: The file '{path}' does not exist.")
     except Exception as e:
         raise ValueError(f"Error: Unable to load the image. {e}")
+
 
 def main():
     """
@@ -40,9 +42,10 @@ def main():
     """
     try:
         # Charger l'image
-        image = ft_load("landscape.jpg")
+        ft_load("landscape.jpg")
     except Exception as e:
         print(f"Error: {e}")
+
 
 if __name__ == "__main__":
     main()

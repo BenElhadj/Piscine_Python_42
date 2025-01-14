@@ -1,7 +1,8 @@
 # load_image.py
 
 import numpy as np
-from matplotlib import pyplot as plt # type: ignore
+from matplotlib import pyplot as plt
+
 
 def ft_load(path: str) -> np.ndarray:
     """
