@@ -1,7 +1,7 @@
 # load_image.py
 
 import numpy as np
-from matplotlib import pyplot as plt
+from matplotlib import pyplot as plt  # type: ignore
 
 
 def ft_load(path: str) -> np.ndarray:
@@ -16,15 +16,21 @@ def ft_load(path: str) -> np.ndarray:
 
     Raises:
         FileNotFoundError: If the image file does not exist.
-        ValueError: If the image format is not supported.
+        ValueError: If the image format is not supported or
+        the image is corrupted.
     """
     try:
         # Charger l'image avec matplotlib
         image = plt.imread(path)
+
+        # Afficher le contenu des pixels
         print(f"The shape of image is: {image.shape}")
         print(image)
+
         return image
     except FileNotFoundError:
-        raise FileNotFoundError(f"Error: The file '{path}' does not exist.")
+        raise FileNotFoundError(
+            f"FileNotFoundError: The file '{path}' does not exist."
+        )
     except Exception as e:
-        raise ValueError(f"Error: Unable to load the image. {e}")
+        raise ValueError(f"ValueError: Unable to load the image. {e}")

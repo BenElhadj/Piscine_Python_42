@@ -1,9 +1,11 @@
 # give_bmi.py
 
+import sys
+
 
 def give_bmi(
-        height: list[int | float], weight: list[int | float]
-        ) -> list[int | float]:
+    height: list[int | float], weight: list[int | float]
+) -> list[float]:
     """
     Calculate the BMI (Body Mass Index) for given heights and weights.
 
@@ -12,31 +14,39 @@ def give_bmi(
         weight (list[int | float]): List of weights in kilograms.
 
     Returns:
-        list[int | float]: List of BMI values.
+        list[float]: List of BMI values.
 
     Raises:
-        ValueError: If the height and weight lists are not of the same size.
+        ValueError: If the height and weight lists are not of
+        the same size or if they are empty.
         TypeError: If the elements of height or weight are not int or float.
     """
-    verrore = "(Les listes height et weight doivent avoir la même taille.)."
-    if len(height) != len(weight):
-        raise ValueError({verrore})
+    try:
+        if len(height) == 0 or len(weight) == 0:
+            raise ValueError(
+                "ValueError: height and weight lists cannot be empty."
+            )
 
-    if not all(isinstance(h, (int, float)) for h in height):
-        raise TypeError(
-            "Les éléments de height doivent être des entiers ou des flottants."
-        )
-    if not all(isinstance(w, (int, float)) for w in weight):
-        raise TypeError(
-            "Les éléments de weight doivent être des entiers ou des flottants."
-        )
+        if len(height) != len(weight):
+            raise ValueError(
+                "ValueError: height and weight lists must be of the same size."
+            )
 
-    bmi_list = []
-    for h, w in zip(height, weight):
-        bmi = w / (h**2)
-        bmi_list.append(bmi)
+        if not all(isinstance(h, (int, float)) for h in height):
+            raise TypeError("TypeError: height elements must be int or float.")
+        if not all(isinstance(w, (int, float)) for w in weight):
+            raise TypeError("TypeError: weight elements must be int or float.")
 
-    return bmi_list
+        bmi_list = []
+        for h, w in zip(height, weight):
+            bmi = w / (h**2)
+            bmi_list.append(bmi)
+
+        return bmi_list
+    except (ValueError, TypeError):
+        # Désactiver le traceback pour afficher uniquement le message d'erreur
+        sys.tracebacklimit = 0
+        raise  # Relancer l'exception pour qu'elle soit propagée
 
 
 def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
@@ -55,9 +65,7 @@ def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
         TypeError: If the elements of bmi are not int or float.
     """
     if not all(isinstance(b, (int, float)) for b in bmi):
-        raise TypeError(
-            "Les éléments de bmi doivent être des entiers ou des flottants."
-        )
+        raise TypeError("TypeError: bmi elements must be int or float.")
 
     return [b > limit for b in bmi]
 

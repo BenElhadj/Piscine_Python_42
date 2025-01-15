@@ -22,7 +22,7 @@ def crop_image(image: np.ndarray, size: int) -> np.ndarray:
     height, width, _ = image.shape
     if size > min(height, width):
         err = "The image is too small to be cropped to the specified size."
-        raise ValueError(f"Error: {err}")
+        raise ValueError(f"ValueError: {err}")
 
     start_x = (width - size) // 2
     start_y = (height - size) // 2
@@ -51,7 +51,7 @@ def rotate_image(image: np.ndarray) -> np.ndarray:
     # Appliquer un effet miroir (symétrie horizontale)
     mirrored_image = rotated_image[::-1, :, :]
 
-    return mirrored_image, rotated_image
+    return mirrored_image
 
 
 def display_image(image: np.ndarray, title: str):
@@ -83,13 +83,11 @@ def main():
         print(cropped_image)
 
         # Effectuer la rotation et l'effet miroir
-        # mirrored_image, rotated_image = rotate_image(cropped_image)
-        _, rotated_image = rotate_image(cropped_image)
+        rotated_image = rotate_image(cropped_image)
         print(f"New shape after rotating: {rotated_image.shape}")
         print(rotated_image)
 
         # Afficher l'image transformée
-        # display_image(mirrored_image, "mirrored Image")
         display_image(rotated_image, "Rotated and Mirrored Image")
     except Exception as e:
         print(f"Error: {e}")

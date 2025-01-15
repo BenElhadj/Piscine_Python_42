@@ -15,9 +15,8 @@ def ft_invert(array: np.ndarray) -> np.ndarray:
     Returns:
         np.ndarray: The image with inverted colors.
     """
+    # Utilisation des opérateurs autorisés : =, +, -, *
     inverted_array = 255 - array
-    # Normaliser
-    inverted_array = np.clip(inverted_array, 0, 255).astype(np.uint8)
     # Afficher les images transformées
     display_image(array, "Original Image")
     display_image(inverted_array, "Inverted Image")
@@ -34,12 +33,11 @@ def ft_red(array: np.ndarray) -> np.ndarray:
     Returns:
         np.ndarray: The image with a red filter.
     """
+    # Utilisation des opérateurs autorisés : =, *
     red_array = array.copy()
-    red_array[:, :, 1] = 0  # Supprimer le vert
-    red_array[:, :, 2] = 0  # Supprimer le bleu
-    # Normaliser
-    red_array = np.clip(red_array, 0, 255).astype(np.uint8)
-    # Afficher l'images transformée
+    red_array[:, :, 1] = red_array[:, :, 1] * 0
+    red_array[:, :, 2] = red_array[:, :, 2] * 0
+    # Afficher l'image transformée
     display_image(red_array, "Red Filter")
     return red_array
 
@@ -54,11 +52,10 @@ def ft_green(array: np.ndarray) -> np.ndarray:
     Returns:
         np.ndarray: The image with a green filter.
     """
+    # Utilisation des opérateurs autorisés : =, -
     green_array = array.copy()
-    green_array[:, :, 0] = 0  # Supprimer le rouge
-    green_array[:, :, 2] = 0  # Supprimer le bleu
-    # Normaliser
-    green_array = np.clip(green_array, 0, 255).astype(np.uint8)
+    green_array[:, :, 0] = green_array[:, :, 0] - green_array[:, :, 0]
+    green_array[:, :, 2] = green_array[:, :, 2] - green_array[:, :, 2]
     # Afficher l'image transformée
     display_image(green_array, "Green Filter")
     return green_array
@@ -74,11 +71,10 @@ def ft_blue(array: np.ndarray) -> np.ndarray:
     Returns:
         np.ndarray: The image with a blue filter.
     """
+    # Utilisation des opérateurs autorisés : =
     blue_array = array.copy()
-    blue_array[:, :, 0] = 0  # Supprimer le rouge
-    blue_array[:, :, 1] = 0  # Supprimer le vert
-    # Normaliser
-    blue_array = np.clip(blue_array, 0, 255).astype(np.uint8)
+    blue_array[:, :, 0] = 0
+    blue_array[:, :, 1] = 0
     # Afficher l'image transformée
     display_image(blue_array, "Blue Filter")
     return blue_array
@@ -94,13 +90,23 @@ def ft_grey(array: np.ndarray) -> np.ndarray:
     Returns:
         np.ndarray: The grayscale image.
     """
-    grey_array = np.mean(array, axis=2, keepdims=True)
-    grey_array = np.repeat(grey_array, 3, axis=2)
-    # Normaliser
-    grey_array = np.clip(grey_array, 0, 255).astype(np.uint8)
+    # Utilisation des opérateurs autorisés : =, /
+    # Calcul de la moyenne manuellement (R + G + B) / 3
+    grey_array = (
+        array[:, :, 0] / 3 + array[:, :, 1] / 3 + array[:, :, 2] / 3
+    )  # Utilisation de / et =
+
+    # Créer un tableau vide pour stocker l'image en gris avec 3 canaux
+    grey_image = np.zeros_like(array)
+
+    # Répéter la valeur du gris sur les 3 canaux manuellement
+    grey_image[:, :, 0] = grey_array  # Canal rouge
+    grey_image[:, :, 1] = grey_array  # Canal vert
+    grey_image[:, :, 2] = grey_array  # Canal bleu
+
     # Afficher l'image transformée
-    display_image(grey_array, "Grayscale Image")
-    return grey_array
+    display_image(grey_image, "Grayscale Image")
+    return grey_image
 
 
 def display_image(array: np.ndarray, title: str):
@@ -111,9 +117,6 @@ def display_image(array: np.ndarray, title: str):
         array (np.ndarray): The image to display.
         title (str): The title of the image.
     """
-    # Normaliser pour les flottants
-    if array.dtype != np.uint8:
-        array = np.clip(array, 0, 1.0)
     # Afficher l'image
     plt.imshow(array)
     plt.title(title)

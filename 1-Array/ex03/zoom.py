@@ -15,20 +15,41 @@ def zoom_image(image: np.ndarray, zoom_area: tuple) -> np.ndarray:
 
     Returns:
         np.ndarray: The zoomed and grayscale image.
+
+    Raises:
+        ValueError: If the zoom area is invalid.
     """
-    start_x, start_y, end_x, end_y = zoom_area
-    zoomed_image = image[start_y:end_y, start_x:end_x]
+    try:
+        start_x, start_y, end_x, end_y = zoom_area
 
-    # Convertir l'image zoomée en niveaux de gris (1 canal)
-    zoomed_gray = np.mean(zoomed_image, axis=2, keepdims=True).astype(np.uint8)
+        # Vérifier que la zone de zoom est valide
+        if (
+            start_x < 0
+            or start_y < 0
+            or end_x > image.shape[1]
+            or end_y > image.shape[0]
+            or start_x >= end_x
+            or start_y >= end_y
+        ):
+            raise ValueError("Invalid zoom area.")
 
-    # Afficher la nouvelle forme de l'image
-    or_shape = (zoomed_image.shape[0], zoomed_gray.shape[1])
-    print(f"New shape after slicing: {zoomed_gray.shape} or {or_shape}")
-    print(zoomed_gray)
+        # Zoom sur la zone spécifiée
+        zoomed_image = image[start_y:end_y, start_x:end_x]
 
-    return zoomed_gray
-    # return zoomed_image
+        # Convertir l'image zoomée en niveaux de gris (1 canal)
+        zoomed_gray = np.mean(zoomed_image, axis=2, keepdims=True).astype(
+            np.uint8
+        )
+
+        # Afficher la nouvelle forme de l'image
+        or_shape = (zoomed_image.shape[0], zoomed_gray.shape[1])
+        print(f"New shape after slicing: {zoomed_gray.shape} or {or_shape}")
+        print(zoomed_gray)
+
+        return zoomed_gray
+        # return zoomed_image
+    except Exception as e:
+        raise ValueError(f"ValueError: {e}")
 
 
 def display_image(image: np.ndarray, title: str):
