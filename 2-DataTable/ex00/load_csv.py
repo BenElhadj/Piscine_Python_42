@@ -1,7 +1,6 @@
 # load_csv.py
 
 import pandas as pd
-import sys
 
 
 def load(path: str) -> None:
@@ -36,14 +35,10 @@ def load(path: str) -> None:
 
             # Format the first row
             row = f"{first_row[0]} {first_col} ... {last_col}"
-            
             to_print = f"{header}\n{row}\n  ..."
             return to_print
         return None
 
-    # except (TypeError, ValueError, IndexError, FileNotFoundError, pd.errors.EmptyDataError, pd.errors.ParserError) as e:
-    #     sys.tracebacklimit = 0
-    #     raise
     except FileNotFoundError:
         return "FileNotFoundError: The file was not found."
     except pd.errors.EmptyDataError:
