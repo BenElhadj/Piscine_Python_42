@@ -92,9 +92,18 @@ def ft_grey(array: np.ndarray) -> np.ndarray:
     """
     # Utilisation des opérateurs autorisés : =, /
     # Calcul de la moyenne manuellement (R + G + B) / 3
-    grey_array = (
-        array[:, :, 0] / 3 + array[:, :, 1] / 3 + array[:, :, 2] / 3
-    )  # Utilisation de / et =
+
+    # grey_array = (
+    #     array[:, :, 0] / 3 + array[:, :, 1] / 3 + array[:, :, 2] / 3
+    # )  # Utilisation de / et =
+
+    # grey_array = np.sum(array[:, :, :3] / 3, axis=2)
+    # grey_array = np.add(np.add(array[:, :, 0] / 3, array[:, :, 1] / 3),
+    #                     array[:, :, 2] / 3)
+
+    grey_array = array[:, :, 0] / 1.33
+    grey_array = array[:, :, 1] / 1.33
+    grey_array = array[:, :, 2] / 1.33
 
     # Créer un tableau vide pour stocker l'image en gris avec 3 canaux
     grey_image = np.zeros_like(array)
