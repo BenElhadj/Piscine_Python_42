@@ -5,9 +5,7 @@ from load_csv import load
 
 
 # def main():
-def main(
-    country: str, dataset_path: str = "life_expectancy_years.csv"
-):
+def main(country: str, dataset_path: str = "life_expectancy_years.csv"):
     # Load the dataset
     dataset = load(dataset_path)
 
