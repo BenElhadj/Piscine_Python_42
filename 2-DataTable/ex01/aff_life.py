@@ -5,7 +5,7 @@ from load_csv import load
 
 
 # def main():
-def display_country(
+def main(
     country: str, dataset_path: str = "life_expectancy_years.csv"
 ):
     # Load the dataset
@@ -46,4 +46,4 @@ def display_country(
 
 
 if __name__ == "__main__":
-    display_country("France", "life_expectancy_years.csv")
+    main("France", "life_expectancy_years.csv")
