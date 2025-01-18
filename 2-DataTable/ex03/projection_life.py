@@ -6,8 +6,8 @@ from load_csv import load
 
 def main(
     life_expectancy_file: str = "life_expectancy_years.csv",
-    income_file: str =
-    "income_per_person_gdppercapita_ppp_inflation_adjusted.csv",
+    income_file:
+        str = "income_per_person_gdppercapita_ppp_inflation_adjusted.csv",
     year: str = "1900",
 ):
     """
@@ -40,9 +40,7 @@ def main(
         year not in life_expectancy_dataset.columns
         or year not in income_data.columns
     ):
-        print(
-            f"Error: Data for the year {year} not found in datasets."
-        )
+        print(f"Error: Data for the year {year} not found in datasets.")
         return
 
     # Extract life expectancy and income data for the specified year
@@ -67,8 +65,9 @@ def main(
     )
     plt.xscale("log")
     plt.xticks(ticks=[300, 1000, 10000], labels=["300", "1k", "10k"])
-    plt.title(year)
     plt.xlabel("Gross domestic Product")
+    plt.title(year)
+    plt.yticks(ticks=range(20, 56, 5))
     plt.ylabel("Life Expectancy")
 
     # Show the plot

@@ -31,9 +31,8 @@ def extract_population(dataset, country, years_range=(1800, 2050)):
     if country_data.empty:
         raise ValueError(f"Error: Data for {country} not found.")
 
-    years = list(
-        map(int, country_data.columns[1:])
-    )  # Convert year columns to integers
+    # Convert year columns to integers
+    years = list(map(int, country_data.columns[1:]))
     population = [
         convert_population(value) for value in country_data.values[0][1:]
     ]  # Convert population
@@ -48,8 +47,8 @@ def extract_population(dataset, country, years_range=(1800, 2050)):
 
 
 def main(
-    country1="France", country2="Belgium", csv_path="population_total.csv"
-):
+        country1="France", country2="Belgium", csv_path="population_total.csv"
+        ):
     """
     Main function to compare the population of two countries over time.
     """
@@ -63,18 +62,19 @@ def main(
         years2, pop2 = extract_population(dataset, country2)
 
         # Plot the data
-        plt.plot(
-            years1, pop1, label=country1, color="green"
-        )  # Country 1 in green
-        plt.plot(
-            years2, pop2, label=country2, color="blue"
-        )  # Country 2 in blue
+        # Country 2 in blue
+        plt.plot(years2, pop2, label=country2, color="blue")
+        # Country 1 in green
+        plt.plot(years1, pop1, label=country1, color="green")
 
         # Customize the plot
-        plt.title(f"{country1} vs {country2} Population Projections")
+        # plt.title(f"{country1} vs {country2} Population Projections")
+        plt.title("Population Projections")
         plt.xlabel("Year")
+        plt.xticks(ticks=range(1800, 2041, 40))
         plt.ylabel("Population")
-        plt.legend(loc='lower right')
+        plt.yticks(ticks=[20e6, 40e6, 60e6], labels=["20M", "40M", "60M"])
+        plt.legend(loc="lower right")
 
         plt.show()
 

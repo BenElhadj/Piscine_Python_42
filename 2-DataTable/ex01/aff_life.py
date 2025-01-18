@@ -34,11 +34,9 @@ def main(country: str, dataset_path: str = "life_expectancy_years.csv"):
     # Add title and labels
     plt.title(f"{country} Life Expectancy Projections")
     plt.xlabel("Year")
+    plt.xticks(ticks=range(1800, 2081, 40))
     plt.ylabel("Life Expectancy")
-
-    # Add a legend
-    plt.legend()
-
+    plt.yticks(ticks=range(30, 91, 10))
     # Show the plot
     plt.show()
 
