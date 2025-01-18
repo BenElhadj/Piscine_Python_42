@@ -65,6 +65,7 @@ def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
         TypeError: If the elements of bmi are not int or float.
     """
     if not all(isinstance(b, (int, float)) for b in bmi):
+        sys.tracebacklimit = 0
         raise TypeError("TypeError: bmi elements must be int or float.")
 
     return [b > limit for b in bmi]
@@ -82,6 +83,7 @@ def main():
         print(bmi, type(bmi))
         print(apply_limit(bmi, 26))
     except (ValueError, TypeError) as e:
+        sys.tracebacklimit = 0
         print(f"Error: {e}")
 
 

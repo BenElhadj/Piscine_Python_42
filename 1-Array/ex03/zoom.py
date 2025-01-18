@@ -1,5 +1,6 @@
 # zoom.py
 
+import sys
 import numpy as np
 from matplotlib import pyplot as plt
 from load_image import ft_load
@@ -49,6 +50,7 @@ def zoom_image(image: np.ndarray, zoom_area: tuple) -> np.ndarray:
         return zoomed_gray
         # return zoomed_image
     except Exception as e:
+        sys.tracebacklimit = 0
         raise ValueError(f"ValueError: {e}")
 
 
@@ -89,6 +91,7 @@ def main():
         # Afficher l'image zoomée
         display_image(zoomed_image, "Zoomed Image")
     except Exception as e:
+        sys.tracebacklimit = 0
         print(f"Error: {e}")
 
 

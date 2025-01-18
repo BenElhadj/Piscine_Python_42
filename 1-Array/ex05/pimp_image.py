@@ -1,5 +1,6 @@
 # pimp_image.py
 
+import sys
 import numpy as np
 from matplotlib import pyplot as plt  # type: ignore
 from load_image import ft_load
@@ -149,6 +150,7 @@ def main():
         ft_grey(array)
 
     except Exception as e:
+        sys.tracebacklimit = 0
         print(f"Error: {e}")
 
 

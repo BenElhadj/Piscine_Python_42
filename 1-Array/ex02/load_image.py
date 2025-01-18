@@ -1,5 +1,6 @@
 # load_image.py
 
+import sys
 import numpy as np
 from matplotlib import pyplot as plt  # type: ignore
 
@@ -28,12 +29,9 @@ def ft_load(path: str) -> np.ndarray:
         print(image)
 
         return image
-    except FileNotFoundError:
-        raise FileNotFoundError(
-            f"FileNotFoundError: The file '{path}' does not exist."
-        )
-    except Exception as e:
-        raise ValueError(f"ValueError: Unable to load the image. {e}")
+    except (FileNotFoundError, Exception):
+        sys.tracebacklimit = 0
+        raise
 
 
 def main():
@@ -44,6 +42,7 @@ def main():
         # Charger l'image
         ft_load("landscape.jpg")
     except Exception as e:
+        sys.tracebacklimit = 0
         print(f"Error: {e}")
 
 
