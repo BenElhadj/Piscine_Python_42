@@ -24,19 +24,20 @@ def load(path: str) -> None:
         # Return None to avoid printing the dataset in tester.py
 
         if dataset is not None:
-            # Extract the column names and first row
-            columns = list(dataset.columns)
-            first_row = dataset.iloc[0].values
-            first_col = f"{' '.join(map(str, columns[1:5]))}"
-            last_col = f"{' '.join(map(str, columns[-5:]))}"
+            # # Extract the column names and first row
+            # columns = list(dataset.columns)
+            # first_row = dataset.iloc[0].values
+            # first_col = f"{' '.join(map(str, columns[1:5]))}"
+            # last_col = f"{' '.join(map(str, columns[-5:]))}"
 
-            # Format the header
-            header = f"{columns[0]} {first_col} ... {last_col}"
+            # # Format the header
+            # header = f"{columns[0]} {first_col} ... {last_col}"
 
-            # Format the first row
-            row = f"{first_row[0]} {first_col} ... {last_col}"
-            to_print = f"{header}\n{row}\n  ..."
-            return to_print
+            # # Format the first row
+            # row = f"{first_row[0]} {first_col} ... {last_col}"
+            # to_print = f"{header}\n{row}\n  ..."
+            # return to_print
+            return dataset
         return None
 
     except FileNotFoundError:
