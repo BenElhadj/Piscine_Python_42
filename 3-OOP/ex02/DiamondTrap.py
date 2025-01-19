@@ -16,22 +16,22 @@ class King(Baratheon, Lannister):
     @property
     def eyes(self):
         """Getter for eyes: Get the eye color of the King."""
-        return self._eyes
+        return self.__dict__.get("eyes", "brown")
 
     @eyes.setter
     def eyes(self, value):
         """Setter for eyes: Set the eye color of the King."""
-        self._eyes = value
+        self.__dict__["eyes"] = value
 
     @property
     def hairs(self):
         """Getter for hairs: Get the hair color of the King."""
-        return self._hairs
+        return self.__dict__.get("hairs", "dark")
 
     @hairs.setter
     def hairs(self, value):
         """Setter for hairs: Set the hair color of the King."""
-        self._hairs = value
+        self.__dict__["hairs"] = value
 
     def set_eyes(self, color):
         """Method for King: Set the eye color of the King."""
