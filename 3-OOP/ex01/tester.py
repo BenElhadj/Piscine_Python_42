@@ -16,5 +16,8 @@ print(Cersei.__dict__)
 print(Cersei.__str__)
 print(Cersei.is_alive)
 print("---")
-Jaime = Lannister.create_lannister("Jaime", True)
-print(f"Name : {Jaime.first_name}, {type(Jaime).__name__}, Alive : {Jaime.is_alive}")
+Jaine = Lannister.create_lannister("Jaine", True)
+name = f"'{Jaine.first_name}', '{type(Jaine).__name__}'"
+print(
+    f"Name : ({name}), Alive : {Jaine.is_alive}"
+)
