@@ -13,13 +13,13 @@ class calculator:
         Method for calculator:
         Calculate the dot product of two vectors.
         """
-        result = sum(x * y for x, y in zip(V1, V2))
+        result = sum(float(x * y) for x, y in zip(V1, V2))
         print(f"Dot product is: {result}")
 
     @staticmethod
     def add_vec(V1: list[float], V2: list[float]) -> None:
         """Method for calculator: Add two vectors element-wise."""
-        result = [x + y for x, y in zip(V1, V2)]
+        result = [float(x + y) for x, y in zip(V1, V2)]
         print(f"Add Vector is : {result}")
 
     @staticmethod
@@ -28,19 +28,5 @@ class calculator:
         Method for calculator:
         Subtract two vectors element-wise.
         """
-        result = [x - y for x, y in zip(V1, V2)]
+        result = [float(x - y) for x, y in zip(V1, V2)]
         print(f"Sous Vector is: {result}")
-
-    def __str__(self):
-        """
-        Method for calculator:
-        Return a string representation of the vector.
-        """
-        return str(self.vector)
-
-    def __repr__(self):
-        """
-        Method for calculator:
-        Return a formal string representation of the vector.
-        """
-        return self.__str__()

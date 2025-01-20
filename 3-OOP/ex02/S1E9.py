@@ -1,9 +1,6 @@
 # S1E9.py
 
-import sys
 from abc import ABC, abstractmethod
-
-sys.tracebacklimit = 0
 
 
 class Character(ABC):

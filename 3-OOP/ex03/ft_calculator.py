@@ -1,7 +1,4 @@
 # ft_calculator.py
-# import sys
-
-# sys.tracebacklimit = 0
 
 
 class calculator:
@@ -24,7 +21,6 @@ class calculator:
         """
         result = [x + scalar for x in self.vector]
         print(result)
-        return calculator(result)
 
     def __mul__(self, scalar):
         """
@@ -33,7 +29,6 @@ class calculator:
         """
         result = [x * scalar for x in self.vector]
         print(result)
-        return calculator(result)
 
     def __sub__(self, scalar):
         """
@@ -42,7 +37,6 @@ class calculator:
         """
         result = [x - scalar for x in self.vector]
         print(result)
-        return calculator(result)
 
     def __truediv__(self, scalar):
         """
@@ -53,18 +47,3 @@ class calculator:
             raise ZeroDivisionError("Division by zero is not allowed.")
         result = [x / scalar for x in self.vector]
         print(result)
-        return calculator(result)
-
-    def __str__(self):
-        """
-        Method for calculator:
-        Return a string representation of the vector.
-        """
-        return str(self.vector)
-
-    def __repr__(self):
-        """
-        Method for calculator:
-        Return a formal string representation of the vector.
-        """
-        return self.__str__()
