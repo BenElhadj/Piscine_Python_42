@@ -19,24 +19,24 @@ class calculator:
         Method for calculator:
         Add a scalar to each element of the vector.
         """
-        result = [x + scalar for x in self.vector]
-        print(result)
+        self.vector = [x + scalar for x in self.vector]
+        print(self.vector)
 
     def __mul__(self, scalar):
         """
         Method for calculator:
         Multiply each element of the vector by a scalar.
         """
-        result = [x * scalar for x in self.vector]
-        print(result)
+        self.vector = [x * scalar for x in self.vector]
+        print(self.vector)
 
     def __sub__(self, scalar):
         """
         Method for calculator:
         Subtract a scalar from each element of the vector.
         """
-        result = [x - scalar for x in self.vector]
-        print(result)
+        self.vector = [x - scalar for x in self.vector]
+        print(self.vector)
 
     def __truediv__(self, scalar):
         """
@@ -45,5 +45,5 @@ class calculator:
         """
         if scalar == 0:
             raise ZeroDivisionError("Division by zero is not allowed.")
-        result = [x / scalar for x in self.vector]
-        print(result)
+        self.vector = [x / scalar for x in self.vector]
+        print(self.vector)
