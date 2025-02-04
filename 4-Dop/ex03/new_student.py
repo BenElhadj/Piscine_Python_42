@@ -34,7 +34,7 @@ class Student:
         Génère le login et l'id automatiquement.
         """
         # Génère le login à partir du nom et du prénom
-        self.login = (self.name[0] + self.surname).lower()
+        self.login = (self.name[0] + self.surname)
 
         # Génère un id aléatoire
         self.id = generate_id()

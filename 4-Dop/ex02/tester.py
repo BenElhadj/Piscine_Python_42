@@ -2,18 +2,15 @@
 
 
 from callLimit import callLimit
+@callLimit(3)
+def f():
+    print("f()")
 
+@callLimit(1)
+def g():
+    print("g()")
 
-@callLimit(5)
-def f(i):
-    print(f"f({i})")
+for _ in range(3):
+    f()
+    g()
 
-
-@callLimit(2)
-def g(i):
-    print(f"g({i})")
-
-
-for i in range(10):
-    f(i + 1)
-    g(i + 1)

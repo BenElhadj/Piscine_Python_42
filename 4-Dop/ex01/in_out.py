@@ -28,9 +28,9 @@ def outer(x: int | float, function) -> object:
         Applique `function` à `x` et retourne le résultat.
         Incrémente le compteur d'appels à chaque invocation.
         """
-        nonlocal count  # Permet de modifier `count` de la fonction parente
-        result = function(x)
-        count += 1
-        return result
+        nonlocal count, x  # Permet de modifier `count` de la fonction parente
+        count = function(x)
+        x = count
+        return count
 
     return inner

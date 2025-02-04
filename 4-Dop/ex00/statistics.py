@@ -42,18 +42,7 @@ def ft_statistics(*args: Any, **kwargs: Any) -> None:
         variance = sum((x - mean) ** 2 for x in sorted_args) / n
 
         # Calcul de l'écart-type (sans utiliser sqrt)
-        def sqrt_manual(x):
-            # Méthode de Newton pour calculer la racine carrée
-            if x == 0:
-                return 0
-            guess = x / 2
-            while True:
-                new_guess = (guess + x / guess) / 2
-                if abs(new_guess - guess) < 1e-10:
-                    return new_guess
-                guess = new_guess
-
-        std = sqrt_manual(variance)
+        std = variance ** 0.5
 
         # Affiche les statistiques demandées dans kwargs
         for _, value in kwargs.items():
